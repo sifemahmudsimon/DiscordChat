@@ -87,8 +87,6 @@ const DiscordChat = ({ data }) => {
             setIsDefan(false);
         }
         setIsMute(!isMute);
-        playAudio();
-
     }
 
 
