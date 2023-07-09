@@ -1,0 +1,157 @@
+:root {
+    --DC_primary: #1E1F22;
+    --DC_secondary: rgb(54, 56, 60);
+    --DC_lightsecondary: rgb(73, 75, 80);
+    --DC_primaryfont: #90949b;
+    --DC_secondaryfont: #ffff;
+    --DC_connected: #3BA55C;
+    --DC_noification: #ff4545;
+}
+
+.discordchat {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 100vh;
+    background: var(--DC_secondary);
+    color: var(--DC_primaryfont);
+    overflow: hidden;
+}
+
+.discordchat .header {
+    padding-left: 2%;
+    border-bottom: 1px solid var(--DC_primary);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    flex: 0 0 auto;
+}
+
+.discordchat .footer {
+    flex: 0 0 auto;
+    margin-top: auto;
+}
+
+.discordchat .body {
+    padding-top: 5%;
+    padding-left: 2%;
+    flex: 1 1 auto;
+    overflow-y: auto;
+}
+
+
+.discordchat .body ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.discordchat .body ul li {
+    text-decoration: none;
+    padding: 1.5% 0% 1.5% 6%;
+}
+
+.discordchat .body .voicebody .user {
+    padding: 1.5% 0% 1.5% 4%;
+}
+
+.discordchat .subheading {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: .25rem 0 .25rem .25rem;
+}
+
+
+.discordchat .subheading .icon {
+    flex: 0 0 auto;
+}
+
+.discordchat .subheading .heading {
+    margin-left: 2%;
+    flex: 0 0 auto;
+
+}
+
+.discordchat .subheading .voicestatus {
+    margin-left: auto;
+    margin-right: .75rem;
+    font-size: 75%;
+
+}
+
+.discordchat .footerbody .subheading .voicestatus {
+    margin-left: auto;
+    margin-right: .75rem;
+    font-size: 75%;
+}
+
+.discordchat .subheading .voicestatus .iconrow {
+    display: flex;
+    flex-direction: row;
+}
+
+.discordchat .icons {
+    padding: .25rem .25rem .25rem .25rem;
+}
+
+.discordchat .footerbody .icons {
+    font-size: 1rem;
+}
+
+.discordchat .connectionstatus {
+    color: var(--DC_connected);
+    background: var(--DC_primary);
+    padding: 5% 0% 5% 2%;
+}
+
+.discordchat .userbar {
+    background: var(--DC_primary);
+    padding: 5% 0% 5% 2%;
+    border-top: 1px solid var(--DC_secondary);
+}
+
+.discordchat .numbernotification {
+    background: var(--DC_noification);
+    min-width: 1rem;
+    height: 1rem;
+    border-radius: 0.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+}
+
+/* hover & Active*/
+.discordchat .footerbody .icons:hover {
+    cursor: pointer;
+    background: var(--DC_secondary);
+    border-radius: .25rem;
+}
+.dicordchat .subheading:hover{
+    background-color: var(--DC_primaryfont);
+}
+
+.discordchat .body .subheading:hover {
+    background-color: var(--DC_lightsecondary);
+    cursor: pointer;
+    color: var(--DC_secondaryfont);
+    border-radius: .25rem;
+}
+.discordchat .body .subheading:active {
+    background-color: var(--DC_lightsecondary);
+    cursor: pointer;
+    color: var(--DC_secondaryfont);
+    border-radius: .25rem;
+}
+
+
+.discordchat .body h5:hover{
+    
+    cursor: pointer;
+    color: var(--DC_secondaryfont);
+    border-radius: .25rem;
+}
+
+/* select */
