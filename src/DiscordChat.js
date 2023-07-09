@@ -6,8 +6,7 @@ import { faAngleRight, faHashtag, faVolumeHigh, faCircleUser, faMicrophoneSlash,
 
 import Leave from './assets/discord-leave.mp3';
 import Join from './assets/discord-join.mp3';
-import Mute from './assets/discord-mute.mp3';
-import UnMute from './assets/discord-unmute.mp3';
+
 import { Channels } from './data/Data';
 
 const DiscordChat = ({ data }) => {
