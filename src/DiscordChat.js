@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './discordChat.css';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faHashtag, faVolumeHigh, faCircleUser, faMicrophoneSlash, faMicrophone, faHeadphones, faRss, faPhoneSlash } from '@fortawesome/free-solid-svg-icons'
 
+import Leave from './assets/discord-leave.mp3';
+import Join from './assets/discord-join.mp3';
+import Mute from './assets/discord-mute.mp3';
+import UnMute from './assets/discord-unmute.mp3';
 import { Channels } from './data/Data';
 
 const DiscordChat = ({ data }) => {
@@ -20,14 +25,55 @@ const DiscordChat = ({ data }) => {
     const [isMute, setIsMute] = useState(false);
     const [isDefan, setIsDefan] = useState(false);
 
+    const [isAudioPlaying, setIsAudioPlaying] = useState(false);
 
+    const playAudio = () => {
+        setIsAudioPlaying(true);
+    };
+
+    const playingAudio = (sound) => {
+        let audio;
+        audio = new Audio(sound);
+        audio.play()
+            .then(() => {
+                // Playback started successfully
+            })
+            .catch((error) => {
+                console.log('Audio playback error:', error);
+            });
+
+        audio.onended = () => {
+            setIsAudioPlaying(false);
+        };
+        return () => {
+            if (audio) {
+                audio.pause();
+                audio.currentTime = 0;
+            }
+        };
+    }
+
+    useEffect(() => {
+        if (isAudioPlaying) {
+            if (isVoiceConnected === false) {
+                playingAudio(Leave)                
+            } else if (isVoiceConnected === true) {
+                playingAudio(Join)
+            }
+
+        }
+    }, [isAudioPlaying, isVoiceConnected]);
+
+   
     const handleClick = (index) => {
         setselectedItem(index)
         setIsVoiceConnected(true);
+        playAudio();
     }
     const endCall = () => {
         setselectedItem('null')
         setIsVoiceConnected(false);
+        playAudio();
     }
 
     const toggleDefan = () => {
@@ -42,22 +88,23 @@ const DiscordChat = ({ data }) => {
             setIsDefan(false);
         }
         setIsMute(!isMute);
+        playAudio();
+
     }
 
-        
+
     const toggleChannel = (event) => {
-        const div=event.target.closest('div')
-        if(div.className==='voicebody'){
+        const { className } = event.target.closest('div')
+        if (className === 'voicebody') {
             SetShowVoiceChannel(!showVoiceChannel)
-        }else{
+        } else {
             SetShowTextChannel(!showTextChannel)
         }
-        
     }
 
     return (
         <div className="discordchat">
-            <div className="header"><h3>Chat Portal</h3></div>
+            <div className="header"><h3>Dicord ChatBot</h3></div>
 
             <div className="body">
                 <div className="textbody">
@@ -65,31 +112,31 @@ const DiscordChat = ({ data }) => {
                     <h5 onClick={toggleChannel}>{Icon(faAngleRight)} TEXT CHANNEL</h5>
                     {showTextChannel && (
                         <ul>
-                        {updatedData.map((DataType, index) => {
-                            if (DataType.type === 'Text') {
-                                return (
-                                    <li key={index} >
-                                        <div className="subheading">
-                                            <div className="icon">
-                                                {Icon(faHashtag)}
-                                            </div>
-                                            <div className="heading"><span>{DataType.name}</span></div>
-                                            <div className="voicestatus">
-                                                {DataType.notificaton !== 0 && (
-                                                    <div className="numbernotification">
-                                                        <span>{DataType.notificaton}</span>
-                                                    </div>
-                                                )}
+                            {updatedData.map((DataType, index) => {
+                                if (DataType.type === 'Text') {
+                                    return (
+                                        <li key={index} >
+                                            <div className="subheading">
+                                                <div className="icon">
+                                                    {Icon(faHashtag)}
+                                                </div>
+                                                <div className="heading"><span>{DataType.name}</span></div>
+                                                <div className="voicestatus">
+                                                    {DataType.notificaton !== 0 && (
+                                                        <div className="numbernotification">
+                                                            <span>{DataType.notificaton}</span>
+                                                        </div>
+                                                    )}
 
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                );
-                            } else {
-                                return null;
-                            }
-                        })}
-                    </ul>
+                                        </li>
+                                    );
+                                } else {
+                                    return null;
+                                }
+                            })}
+                        </ul>
                     )}
                 </div>
                 <div className="voicebody">
