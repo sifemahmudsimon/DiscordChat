@@ -45,13 +45,16 @@
 
 .discordchat .body ul li {
     text-decoration: none;
-    padding: 1.5% 0% 1.5% 6%;
+    padding: 1% 0% 1% 6%;
 }
 
 .discordchat .body .voicebody .user {
     padding: 1.5% 0% 1.5% 4%;
 }
-
+.discordchat .select{
+    margin: 0;
+    padding: 0;
+}
 .discordchat .subheading {
     display: flex;
     justify-content: flex-start;
@@ -139,7 +142,7 @@
     color: var(--DC_secondaryfont);
     border-radius: .25rem;
 }
-.discordchat .body .subheading:active {
+.discordchat .active .select .subheading {
     background-color: var(--DC_lightsecondary);
     cursor: pointer;
     color: var(--DC_secondaryfont);

@@ -4,16 +4,19 @@ export const Channels = {
         name:
           "Softwere Project 01",
         type: "Text",
+        notificaton:4,
       },
       {
         name:
           "Softwere Project 02",
         type: "Text",
+        notificaton:0,
       },
       {
         name:
           "Softwere Project 03",
         type: "Text",
+        notificaton:9,
       },
       {
         name:
