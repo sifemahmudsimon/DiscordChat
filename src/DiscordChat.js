@@ -101,7 +101,7 @@ const DiscordChat = ({ data }) => {
 
     return (
         <div className="discordchat">
-            <div className="header"><h3>Dicord ChatBot</h3></div>
+            <div className="header"><h3>Discord ChatBox</h3></div>
 
             <div className="body">
                 <div className="textbody">
